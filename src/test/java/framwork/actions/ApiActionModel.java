@@ -119,10 +119,10 @@ public class ApiActionModel {
             runUrl = get;
             method = "get";
         }else if (delete != null){
-            url = delete;
+            runUrl = delete;
             method = "delete";
         }else if (put != null){
-            url = put;
+            runUrl = put;
             method = "put";
         }
 
@@ -149,6 +149,7 @@ public class ApiActionModel {
             runUrl = PlaceholderUtils.resolveString(runUrl,actionVariables);
         }
 
+        //拆分given通过读取数据发起请求
         RequestSpecification requestSpecification = given().log().all();
         if (contentType != null){
             requestSpecification.contentType(contentType);
@@ -161,6 +162,7 @@ public class ApiActionModel {
         }else if (runBody != null){
             requestSpecification.body(runBody);
         }
+        //获取返回response，以后可以通过getResponse获取响应信息
         Response response = requestSpecification.request(method,runUrl).then().log().all().extract().response();
         this.response = response;
         return response;

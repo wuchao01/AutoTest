@@ -18,6 +18,7 @@ public class ApiActionModelTest {
         ArrayList<String> actualParameter = new ArrayList<>();
         actualParameter.add("wwa6e174bdb8889eff");
         actualParameter.add("yWX6DThWTj3ilKx9fQnECNbl2BDYGB2RerYf0ccEXWQ");
+
         ApiActionModel apiActionModel = new ApiActionModel();
         apiActionModel.setUrl("https://qyapi.weixin.qq.com/cgi-bin/${x}");
 
