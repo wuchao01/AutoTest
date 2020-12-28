@@ -132,10 +132,10 @@ public class ApiActionModel {
 
         //body全局变量替换
         if (body != null){
-            runBody = PlaceholderUtils.resolveString(body,GlobalVariables.getGlobalVariables());
+            runBody = PlaceholderUtils.resolveString(runBody,GlobalVariables.getGlobalVariables());
         }
         //url全局变量替换
-        runUrl = PlaceholderUtils.resolveString(url,GlobalVariables.getGlobalVariables());
+        runUrl = PlaceholderUtils.resolveString(runUrl,GlobalVariables.getGlobalVariables());
 
         if (formalParam != null && actualParameter != null && formalParam.size() > 0 && actualParameter.size() > 0){
             //根据形参和实参替换内部变量map
