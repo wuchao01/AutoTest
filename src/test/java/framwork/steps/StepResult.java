@@ -1,11 +1,12 @@
 package framwork.steps;
 
+import framwork.BaseResult;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class StepResult {
+public class StepResult extends BaseResult {
     private ArrayList<Executable> assertList;
     private HashMap<String,String> stepVariables = new HashMap<>();
 
@@ -24,4 +25,6 @@ public class StepResult {
     public void setStepVariables(HashMap<String, String> stepVariables) {
         this.stepVariables = stepVariables;
     }
+
+
 }

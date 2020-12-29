@@ -79,7 +79,7 @@ public class StepModel {
     }
 
     //传入testcase变量
-    public void run(HashMap<String,String> testCaseVariables){
+    public StepResult run(HashMap<String,String> testCaseVariables){
         //判断case实参是否为空，如果不为空用case传进来的参数替换掉${XX}
         if (actualParameter != null){
             finalActualParameter.addAll(PlaceholderUtils.resolveList(actualParameter,testCaseVariables));
@@ -119,6 +119,7 @@ public class StepModel {
         //获取assert列表、save值set到stepResult中用来传递给下个参数
         stepResult.setAssertList(assertList);
         stepResult.setStepVariables(stepVariables);
-
+        stepResult.setResponse(response);
+        return stepResult;
     }
 }
