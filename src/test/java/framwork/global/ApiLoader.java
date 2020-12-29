@@ -1,5 +1,6 @@
 package framwork.global;
 
+import framwork.actions.ApiActionModel;
 import framwork.api.ApiObjectModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +26,17 @@ public class ApiLoader {
         });
     }
 
-    public static void getAction(String apiName,String actionName){
-        apis.stream().filter(api -> api.getName().equals(apiName)).forEach(api -> api.getActions().get(actionName));
-
+    public static ApiActionModel getAction(String apiName, String actionName){
+        final ApiActionModel[] apiActionModel = {new ApiActionModel()};
+        apis.stream().filter(api -> api.getName().equals(apiName)).forEach(api -> {
+            apiActionModel[0] = api.getActions().get(actionName);
+        });
+        if (apiActionModel[0] != null){
+            return apiActionModel[0];
+        }else {
+            logger.info("没有找到接口对象：" + apiName + "中的action：" + actionName );
+        }
+        return null;
     }
 
 }

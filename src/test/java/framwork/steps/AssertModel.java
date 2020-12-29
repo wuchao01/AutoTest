@@ -1,5 +1,7 @@
 package framwork.steps;
 
+import io.restassured.response.Response;
+
 public class AssertModel {
     private String actual;
     private String matcher;
@@ -36,5 +38,9 @@ public class AssertModel {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public void run(Response response){
+
     }
 }
