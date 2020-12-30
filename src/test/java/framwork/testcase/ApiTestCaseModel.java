@@ -1,5 +1,7 @@
 package framwork.testcase;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import framwork.steps.StepModel;
 import framwork.steps.StepResult;
 import org.junit.jupiter.api.function.Executable;
@@ -7,17 +9,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.FakerUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class ApiTestCaseModel {
     private String name;
     private String description;
     private ArrayList<StepModel> steps;
     //testcase临时变量
-    private HashMap<String,String> testCaseVariables;
+    private HashMap<String,String> testCaseVariables = new HashMap<>();
     //assertList临时变量
-    private ArrayList<org.junit.jupiter.api.function.Executable> assertList;
+    private ArrayList<Executable> assertList = new ArrayList<>();
     public static final Logger logger = LoggerFactory.getLogger(ApiTestCaseModel.class);
 
 
@@ -61,12 +67,18 @@ public class ApiTestCaseModel {
         this.assertList = assertList;
     }
 
+    //读取yaml文件
+    public static ApiTestCaseModel load(String path) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+        return objectMapper.readValue(new File(path),ApiTestCaseModel.class);
+    }
+
     public void run(){
         //加载用例层关键字变量
         this.testCaseVariables.put("getTimeStamp",FakerUtils.getTimeStamp());
         logger.info("用例变量更新：" + testCaseVariables);
 
-        //遍历step进行执行
+        //遍历steps进行执行
         steps.forEach(step -> {
             StepResult stepResult = step.run(testCaseVariables);
 
@@ -80,5 +92,8 @@ public class ApiTestCaseModel {
                 assertList.addAll(stepResult.getAssertList());
             }
         });
+
+        //进行统一断言
+        assertAll("",assertList.stream());
     }
 }

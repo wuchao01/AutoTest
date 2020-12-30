@@ -91,7 +91,7 @@ public class StepModel {
         //存储save
         if (save != null){
             save.forEach((variablesName,path) -> {
-                String value = response.path(path);
+                String value = response.path(path).toString();
                 stepVariables.put(variablesName,value);
                 logger.info("step变量更新：" + stepVariables);
 
@@ -101,7 +101,7 @@ public class StepModel {
         //存储saveGlobal
         if (saveGlobal != null){
             saveGlobal.forEach((variablesName,path) -> {
-                String value = response.path(path);
+                String value = response.path(path).toString();
                 GlobalVariables.getGlobalVariables().put(variablesName,value);
                 logger.info("全局变量更新：" + GlobalVariables.getGlobalVariables());
             });
