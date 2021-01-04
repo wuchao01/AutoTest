@@ -2,7 +2,7 @@ name: departmentTestCase
 description: 部门相关，增删改查测试用例
 steps:
   - api: tokenhelper
-    action: getToken
+    action: gettoken
     actualParameter: ["ww5ef451bf006ec894","EcEIog2OJ8AtO7PDaqt_yqHKqmYXqwSZKDhyfU1aSiU"]
     saveGlobal:
       accesstoken: access_token
