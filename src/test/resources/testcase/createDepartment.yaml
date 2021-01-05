@@ -9,7 +9,7 @@ steps:
     asserts:
       - actual: errcode
         matcher: equalTo
-        expect: 2
+        expect: 0
         reason: 'getToken错误码校验！'
   - api: department
     action: createDepartment
@@ -19,5 +19,5 @@ steps:
     asserts:
       - actual: errcode
         matcher: equalTo
-        expect: 2
+        expect: 0
         reason: '创建部门校验错误码！'
