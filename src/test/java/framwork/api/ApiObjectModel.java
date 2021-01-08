@@ -39,8 +39,8 @@ public class ApiObjectModel {
     }
 
     //读取yaml文件
-    public static ApiObjectModel load(String path) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-        return objectMapper.readValue(new File(path),ApiObjectModel.class);
-    }
+//    public static ApiObjectModel load(String path) throws IOException {
+//        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+//        return objectMapper.readValue(new File(path),ApiObjectModel.class);
+//    }
 }

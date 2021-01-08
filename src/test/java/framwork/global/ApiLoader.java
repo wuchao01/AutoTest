@@ -4,6 +4,7 @@ import framwork.actions.ApiActionModel;
 import framwork.api.ApiObjectModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.YamlUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class ApiLoader {
     public static void load(String dir){
         Arrays.stream(new File(dir).list()).forEach(path -> {
             try {
-                apis.add(ApiObjectModel.load(dir+"/"+path));
+                apis.add(YamlUtil.load(dir+"/"+path,ApiObjectModel.class));
             } catch (IOException e) {
                 e.printStackTrace();
             }

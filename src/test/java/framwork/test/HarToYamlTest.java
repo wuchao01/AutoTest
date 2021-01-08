@@ -2,17 +2,16 @@ package framwork.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.Har;
 import de.sstoehr.harreader.model.HarRequest;
 import framwork.actions.ApiActionModel;
 import framwork.api.ApiObjectModel;
-import framwork.testcase.ApiTestCaseModel;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.YamlUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,7 +66,7 @@ public class HarToYamlTest {
 
     @Test
     public void runTest() throws IOException {
-        ApiObjectModel apiObjectModel = ApiObjectModel.load("F:\\autotest\\src\\test\\resources\\har\\tokenhelper.yaml");
+        ApiObjectModel apiObjectModel = YamlUtil.load("F:\\autotest\\src\\test\\resources\\har\\tokenhelper.yaml",ApiObjectModel.class);
         apiObjectModel.getActions().get("gettoken").run(null);
     }
 }

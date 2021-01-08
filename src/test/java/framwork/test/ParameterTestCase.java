@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.YamlUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class ParameterTestCase {
         Arrays.stream(new File(testcaseDir).list()).forEach(name -> {
             String path = testcaseDir+"\\"+name;
             try {
-                ApiTestCaseModel apiTestCase = ApiTestCaseModel.load(path);
+                ApiTestCaseModel apiTestCase = YamlUtil.load(path,ApiTestCaseModel.class);
                 testcase.add(arguments(apiTestCase,apiTestCase.getName(),apiTestCase.getDescription()));
             } catch (IOException e) {
                 e.printStackTrace();

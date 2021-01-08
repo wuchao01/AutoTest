@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.YamlUtil;
 
 import java.io.IOException;
 
@@ -20,13 +21,13 @@ public class ApiTestCaseTest {
 
     @Test
     public void loadApiTest() throws IOException {
-        ApiTestCaseModel apiTestCaseModel = ApiTestCaseModel.load("src/test/resources/testcase/createDepartment.yaml");
+        ApiTestCaseModel apiTestCaseModel = YamlUtil.load("src/test/resources/testcase/createDepartment.yaml",ApiTestCaseModel.class);
         logger.info("Debugger!");
     }
 
     @Test
     public void run() throws IOException {
-        ApiTestCaseModel apiTestCaseModel = ApiTestCaseModel.load("src/test/resources/testcase/createDepartment.yaml");
+        ApiTestCaseModel apiTestCaseModel = YamlUtil.load("src/test/resources/testcase/createDepartment.yaml",ApiTestCaseModel.class);
         apiTestCaseModel.run();
         logger.info("Debugger!");
     }

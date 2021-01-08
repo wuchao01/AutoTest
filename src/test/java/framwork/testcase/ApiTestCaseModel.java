@@ -68,10 +68,10 @@ public class ApiTestCaseModel {
     }
 
     //读取yaml文件
-    public static ApiTestCaseModel load(String path) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-        return objectMapper.readValue(new File(path),ApiTestCaseModel.class);
-    }
+//    public static ApiTestCaseModel load(String path) throws IOException {
+//        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+//        return objectMapper.readValue(new File(path),ApiTestCaseModel.class);
+//    }
 
     public void run(){
         //加载用例层关键字变量
